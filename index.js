@@ -31,7 +31,7 @@
             }
 
             let distance = now - countDown;
-
+            console.log(`${prefix}_years`);
             document.getElementById(`${prefix}_years`).innerText = Math.floor(distance / year);
             document.getElementById(`${prefix}_months`).innerText = Math.floor((distance % year) / month);
             document.getElementById(`${prefix}_days`).innerText = Math.floor((distance % month) / day);
