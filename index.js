@@ -8,30 +8,43 @@
   
     let meetDay = "Jan 23, 2021 21:00:00";
     let proposalDay = "May 1, 2021 23:00:00";
+    let engagementDay = "Dec 25, 2023 20:00:00"; // Dia do noivado
+    let weddingDay = ""; // Dia do casamento (em branco por enquanto)
 
-    let countDown = new Date(meetDay).getTime();
-    let countDown2 = new Date(proposalDay).getTime();
+    let countDownMeet = new Date(meetDay).getTime();
+    let countDownProposal = new Date(proposalDay).getTime();
+    let countDownEngagement = new Date(engagementDay).getTime();
+    let countDownWedding = weddingDay ? new Date(weddingDay).getTime() : null;
 
-    setInterval(function() {    
-        let now = new Date().getTime(),
-            distance = now - countDown,
-            distance2 = now - countDown2;
+    setInterval(function () {    
+        let now = new Date().getTime();
 
-        // Encontro
-        document.getElementById("years_meet").innerText = Math.floor(distance / year);
-        document.getElementById("months_meet").innerText = Math.floor((distance % year) / month);
-        document.getElementById("days_meet").innerText = Math.floor((distance % month) / day);
-        document.getElementById("hours_meet").innerText = Math.floor((distance % day) / hour);
-        document.getElementById("minutes_meet").innerText = Math.floor((distance % hour) / minute);
-        document.getElementById("seconds_meet").innerText = Math.floor((distance % minute) / second);
+        function updateCountdown(countDown, prefix) {
+            if (!countDown) {
+                document.getElementById(`${prefix}_years`).innerText = "--";
+                document.getElementById(`${prefix}_months`).innerText = "--";
+                document.getElementById(`${prefix}_days`).innerText = "--";
+                document.getElementById(`${prefix}_hours`).innerText = "--";
+                document.getElementById(`${prefix}_minutes`).innerText = "--";
+                document.getElementById(`${prefix}_seconds`).innerText = "--";
+                return;
+            }
 
-        // Proposta
-        document.getElementById("years_proposal").innerText = Math.floor(distance2 / year);
-        document.getElementById("months_proposal").innerText = Math.floor((distance2 % year) / month);
-        document.getElementById("days_proposal").innerText = Math.floor((distance2 % month) / day);
-        document.getElementById("hours_proposal").innerText = Math.floor((distance2 % day) / hour);
-        document.getElementById("minutes_proposal").innerText = Math.floor((distance2 % hour) / minute);
-        document.getElementById("seconds_proposal").innerText = Math.floor((distance2 % minute) / second);
+            let distance = now - countDown;
+
+            document.getElementById(`${prefix}_years`).innerText = Math.floor(distance / year);
+            document.getElementById(`${prefix}_months`).innerText = Math.floor((distance % year) / month);
+            document.getElementById(`${prefix}_days`).innerText = Math.floor((distance % month) / day);
+            document.getElementById(`${prefix}_hours`).innerText = Math.floor((distance % day) / hour);
+            document.getElementById(`${prefix}_minutes`).innerText = Math.floor((distance % hour) / minute);
+            document.getElementById(`${prefix}_seconds`).innerText = Math.floor((distance % minute) / second);
+        }
+
+        // Atualiza contagens regressivas
+        updateCountdown(countDownMeet, "meet");
+        updateCountdown(countDownProposal, "proposal");
+        updateCountdown(countDownEngagement, "engagement");
+        updateCountdown(countDownWedding, "wedding");
 
     }, 1000);
 }());
