@@ -21,23 +21,23 @@ window.onload = function () {
 
         function updateCountdown(countDown, prefix) {
             if (!countDown) {
-                document.getElementById(`${prefix}_years`).innerText = "--";
-                document.getElementById(`${prefix}_months`).innerText = "--";
-                document.getElementById(`${prefix}_days`).innerText = "--";
-                document.getElementById(`${prefix}_hours`).innerText = "--";
-                document.getElementById(`${prefix}_minutes`).innerText = "--";
-                document.getElementById(`${prefix}_seconds`).innerText = "--";
+                document.getElementById(`years_${prefix}`).innerText = "--";
+                document.getElementById(`months_${prefix}`).innerText = "--";
+                document.getElementById(`days_${prefix}`).innerText = "--";
+                document.getElementById(`hours_${prefix}`).innerText = "--";
+                document.getElementById(`minutes_${prefix}`).innerText = "--";
+                document.getElementById(`seconds_${prefix}`).innerText = "--";
                 return;
             }
 
             let distance = now - countDown;
 
-            document.getElementById(`${prefix}_years`).innerText = Math.floor(distance / year);
-            document.getElementById(`${prefix}_months`).innerText = Math.floor((distance % year) / month);
-            document.getElementById(`${prefix}_days`).innerText = Math.floor((distance % month) / day);
-            document.getElementById(`${prefix}_hours`).innerText = Math.floor((distance % day) / hour);
-            document.getElementById(`${prefix}_minutes`).innerText = Math.floor((distance % hour) / minute);
-            document.getElementById(`${prefix}_seconds`).innerText = Math.floor((distance % minute) / second);
+            document.getElementById(`years_${prefix}`).innerText = Math.floor(distance / year);
+            document.getElementById(`months_${prefix}`).innerText = Math.floor((distance % year) / month);
+            document.getElementById(`days_${prefix}`).innerText = Math.floor((distance % month) / day);
+            document.getElementById(`hours_${prefix}`).innerText = Math.floor((distance % day) / hour);
+            document.getElementById(`minutes_${prefix}`).innerText = Math.floor((distance % hour) / minute);
+            document.getElementById(`seconds_${prefix}`).innerText = Math.floor((distance % minute) / second);
         }
 
         // Atualiza contagens regressivas
