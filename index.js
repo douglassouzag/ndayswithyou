@@ -8,7 +8,7 @@ window.onload = function () {
   
     let meetDay = "Jan 23, 2021 21:00:00";
     let proposalDay = "May 1, 2021 23:00:00";
-    let engagementDay = "Dec 25, 2023 20:00:00"; // Dia do noivado
+    let engagementDay = "Dec 25, 2024 18:30:00"; // Dia do noivado
     let weddingDay = ""; // Dia do casamento (em branco por enquanto)
 
     let countDownMeet = new Date(meetDay).getTime();
